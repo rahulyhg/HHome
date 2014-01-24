@@ -1,0 +1,128 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="HappyHomeNew.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+<%--    <link href="/Scripts/jquery-ui-1.10.3/jquery-ui-1.10.3/themes/base/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery-ui-1.10.3/jquery-ui-1.10.3/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="Scripts/jquery-ui-1.10.3/jquery-ui-1.10.3/ui/jquery-ui.js" type="text/javascript"></script>--%>
+    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#individualinfo').show();
+            debugger;
+            $('#rbtnUserType').change(function () {
+                userType_onClick();
+            });
+
+        });
+
+        function userType_onClick() {
+
+            debugger;
+            var selectedVal = "";
+
+            var selected = $("#rbtnUserType input[type='radio']:checked");
+            if (selected.length > 0) {
+                $('#individualinfo').hide();
+                $('#Agentinfo').hide();
+                $('#Buiderinfo').hide();
+                selectedVal ='#'+selected.val();
+
+                $(selectedVal).show(200);
+//                switch (selectedVal) {
+//                    case 0: $('#individualinfo').dipaly = 'block';
+//                        $('#Agentinfo').dipaly = 'none';
+//                        $('#Buiderinfo').dipaly = 'none';
+//                        break;
+//                    case 1: $('#individualinfo').dipaly = 'none';
+//                        $('#Agentinfo').dipaly = 'block';
+//                        $('#Buiderinfo').dipaly = 'none';
+//                        break;
+//                    case 2: $('#individualinfo').dipaly = 'none';
+//                        $('#Agentinfo').dipaly = 'none';
+//                        $('#Buiderinfo').dipaly = 'block';
+//                        break;
+//                
+//                 }
+
+               
+             }
+        }
+
+    </script>
+    <style type="text/css">
+        .style1
+        {
+            width: 100px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <form runat="server">
+    <div class="top-Bar">
+        <div class="loginDisplay">
+            <div style="text-align: left; float: left">
+                Welcome to Happy Home Portal
+            </div>
+            <div style="text-align: left; float: right;">
+                <span style="text-align: right; padding-right: 20px">Not Register? <a href="Account/Register.aspx">
+                    Register here</a></span>
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        <a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server">Log In</a>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Welcome <span class="bold">
+                            <asp:LoginName ID="HeadLoginName" runat="server" />
+                        </span>!
+                        <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
+                            LogoutPageUrl="~/" />
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <div>
+                    <img alt="Happy home" class="style1" src="/Images/HappyHome.png" /></div>
+                <div style="vertical-align: middle">
+                    Happy Homes For All</div>
+            </div>
+            <%--style="display:inline;position:relative;width:100%;"--%>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false"
+                    IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" />
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Search Property" />
+                         <asp:MenuItem NavigateUrl="~/Builder/BuilderHome.aspx" Text="Post Property" />
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Post Requirements" />
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Contact Us" />
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        <hr />
+        Please contact xyz with your questions, comments, and suggestions.
+        <br />
+        Copyright © HappyHomesForAll.com . All rights reserved.
+    </div>
+    </form>
+</body>
+</html>

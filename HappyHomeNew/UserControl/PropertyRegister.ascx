@@ -10,9 +10,16 @@
     }
    #accordion
     {
-        width: 500px;
+        width: 600px;
         min-height: 100% !important;
+        display:inline-block;
         /*margin: 50px auto;*/
+    }
+    #accordionleft
+    {width:auto;
+     float:right;
+     color:Black;
+      min-height: 100% !important;
     }
     #accordion .ui-accordion-content
     {
@@ -145,359 +152,377 @@
     <h3>
         Listing Type</h3>
     <div>
-        <table width="100%" border="0" cellspacing="5px" cellpadding="5px" class="registrationTable">
-            <tr>
-                <td>
-                    <label>
-                        Transaction Type</label>
-                </td>
-                <td>
-                    <label>
-                        <input type="radio" checked="checked" name="Transaction Type" value="sell" id="TransactionType_0" />
-                        Sell</label>
-                    <label>
-                        <input type="radio" name="Transaction Type" value="rent/Lease" id="TransactionType_1" />
-                        Rent/Lease</label>
-                    <label>
-                        <input type="radio" name="Transaction Type" value="PG" id="TransactionType_2" />
-                        PG</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        Property Type</label>
-                </td>
-                <td>
-                    <select>
-                        <option value="RowHouse" selected>RowHouse</option>
-                        <option value="Flat">Flat</option>
-                        <option value="1 BHK">1 BHK</option>
-                        <option value="Studio Apartment">Studio Apartment</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        Property Condition</label>
-                </td>
-                <td>
-                    <label>
-                        <input type="radio" checked="checked" name="PropertyState" value="New" id="PropertyState_New" />
-                        New</label>
-                    <label>
-                        <input type="radio" name="PropertyState" value="Resale" id="PropertyState_Resale" />
-                        Resale</label>
-                    <label>
-                        <input type="radio" name="PropertyState" value="Both" id="PropertyState_Both" />
-                        Both</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        City</label>
-                </td>
-                <td>
-                    <input type="text" id="txtCity" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        Locality</label>
-                </td>
-                <td>
-                    <input type="text" id="txtLocality" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        Project</label>
-                </td>
-                <td>
-                    <input type="text" id="txtProject" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        Address</label>
-                </td>
-                <td>
-                    <textarea rows="2" id="txtAddress"></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        Area</label>
-                </td>
-                <td>
-                    <input type="text" id="txtarea" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        Total price</label>
-                </td>
-                <td>
-                    <input type="text" id="txtprice" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        Price Negotiable ?
-                    </label>
-                </td>
-                <td>
-                    <input type="radio" checked="checked" name="PriceNegotiable" value="Y" id="PriceNegotiable_Y" />
-                    Yes</label>
-                    <label>
-                        <input type="radio" name="PriceNegotiable" value="N" id="PriceNegotiable_N" />
-                        No</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        Bedroom</label>
-                </td>
-                <td>
-                    <input type="text" id="txtBedroom" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        Floor No.</label>
-                </td>
-                <td>
-                    <input type="text" id="txtFloorNo" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="submit" value="Proceed" />
-                </td>
-            </tr>
-        </table>
-    </div>
+            <table>
+                <tr>
+                    <td>
+                        <label>
+                            Transaction Type</label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" checked="checked" name="Transaction_Type" value="sell" id="rbTransactionType_0" />
+                            Sell</label>
+                        <label>
+                            <input type="radio" name="Transaction_Type" value="rent" id="rbTransactionType_1" />
+                            Rent/Lease</label>
+                        <label>
+                            <input type="radio" name="Transaction_Type" value="PG" id="rbTransactionType_2" />
+                            PG</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Property Type</label>
+                    </td>
+                    <td>
+                        <select runat="server" id="selPropertyType">
+                            <option value="RowHouse" selected="selected">RowHouse</option>
+                            <option value="Apartment">Apartment</option>
+                        </select>
+                        <select runat="server" id="selPropertyComposition">
+                            <option value="1HK">1 HK</option>
+                            <option value="1BHK">1 BHK</option>
+                            <option value="2BHK">2 BHK</option>
+                            <option value="3BHK">3 BHK</option>
+                            <option value="4BHK">4 BHK</option>
+                            <option value="5BHK">5 BHK</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Property Condition</label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" checked="checked" name="PropertyState" value="New" id="PropertyState_New" />
+                            New</label>
+                        <label>
+                            <input type="radio" name="PropertyState" value="Resale" id="PropertyState_Resale" />
+                            Resale</label>
+                        <label>
+                            <input type="radio" name="PropertyState" value="Both" id="PropertyState_Both" />
+                            Both</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            State</label>
+                    </td>
+                    <td>
+                        <input type="text" id="txtState" name="txtState" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            City</label>
+                    </td>
+                    <td>
+                        <input type="text" id="txtCity" name="txtCity" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Locality</label>
+                    </td>
+                    <td>
+                        <input type="text" id="txtLocality" name="txtLocality" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Project</label>
+                    </td>
+                    <td>
+                        <input type="text" id="txtProject" name="txtProject" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Address</label>
+                    </td>
+                    <td>
+                        <textarea rows="4" cols="50" name="txtAddress" id="txtAddress"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Built-Up Area (Sq.Ft.)</label>
+                    </td>
+                    <td>
+                        <input type="text" id="txtArea" name="txtArea" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Total price</label>
+                    </td>
+                    <td>
+                        <input type="text" id="txtPrice" name="txtPrice" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Price Negotiable ?
+                        </label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" checked="checked" name="PriceNegotiable" value="Y" id="PriceNegotiable_Y" />
+                            Yes</label>
+                        <label>
+                            <input type="radio" name="PriceNegotiable" value="N" id="PriceNegotiable_N" />
+                            No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Total no. of Floors
+                    </td>
+                    <td>
+                        <input type="text" id="txtNoOfFloors" name="txtNoOfFloors" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Proceed" />
+                    </td>
+                </tr>
+            </table>
+        </div>
     <h3>
         Property Detail</h3>
-    <div>
-        <table width="100%" border="0" cellspacing="5px" cellpadding="5px" class="registrationTable">
-            <tr>
-                <td>
-                    No. of Bathroom
-                </td>
-                <td>
-                    <label>
-                        <input type="radio" checked="checked" name="Transaction Type" value="sell" id="Radio1" />
-                        Sell</label>
-                    <label>
-                        <input type="radio" name="Transaction Type" value="rent/Lease" id="Radio2" />
-                        Rent/Lease</label>
-                    <label>
-                        <input type="radio" name="Transaction Type" value="PG" id="Radio3" />
-                        PG</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Total Floor
-                </td>
-                <td>
-                    <select>
-                        <option value="RowHouse" selected>RowHouse</option>
-                        <option value="Flat">Flat</option>
-                        <option value="1 BHK">1 BHK</option>
-                        <option value="Studio Apartment">Studio Apartment</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        Age of Construction</label>
-                </td>
-                <td>
-                    <label>
-                        <input type="radio" checked="checked" name="PropertyState" value="New" id="Radio4" />
-                        New</label>
-                    <label>
-                        <input type="radio" name="PropertyState" value="Resale" id="Radio5" />
-                        Resale</label>
-                    <label>
-                        <input type="radio" name="PropertyState" value="Both" id="Radio6" />
-                        Both</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Furnished?
-                </td>
-                <td>
-                    <input type="text" id="Text1" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Property Facing
-                </td>
-                <td>
-                    <input type="text" id="Text2" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Ownership Type
-                </td>
-                <td>
-                    <input type="text" id="Text3" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="submit" value="Proceed" />
-                </td>
-            </tr>
-        </table>
-    </div>
+     <div>
+            <table>
+                <tr>
+                    <td>
+                        No. of Bathroom
+                    </td>
+                    <td>
+                        <input type="text" id="txtNoOfBathroom" name="txtNoOfBathroom" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        No. of Bedroom
+                    </td>
+                    <td>
+                        <input type="text" id="txtNoOfBedroom" name="txtNoOfBedroom" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Floor No.</label>
+                    </td>
+                    <td>
+                        <input type="text" id="txtFloorNo" name="txtFloorNo" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Age of Construction</label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" checked="checked" name="PropertyAge" value="Under_Construction"
+                                id="rbPropertyAge_1" />
+                            Under Construction</label><br />
+                        <label>
+                            <input type="radio" name="PropertyAge" value="Ready_Possesion" id="rbPropertyAge_2" />
+                            Ready Possesion</label><br />
+                        <label>
+                            <input type="radio" name="PropertyAge" value="1_to_5_years" id="rbPropertyAge_3" />
+                            1 to 5 years</label><br />
+                        <label>
+                            <input type="radio" name="PropertyAge" value="5_to_10_years" id="rbPropertyAge_4" />
+                            5 to 10 years</label><br />
+                        <label>
+                            <input type="radio" name="PropertyAge" value="10_to_15_years" id="rbPropertyAge_5" />
+                            10 to 15 years</label><br />
+                        <label>
+                            <input type="radio" name="PropertyAge" value="15_years_above" id="rbPropertyAge_6" />
+                            15 years and above</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Furnished?
+                    </td>
+                    <td>
+                        <select  runat="server" id="selFurnished">
+                            <option value="Full_Furnished">Full Furnished</option>
+                            <option value="Semi_Furnished">Semi Furnished</option>
+                            <option value="UnFurnished">Unfurnished</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Property Facing
+                    </td>
+                    <td>
+                        <select runat="server" id="selPropertyFacing">
+                            <option value="North">North</option>
+                            <option value="South">South</option>
+                            <option value="East">East</option>
+                            <option value="West">West</option>
+                            <option value="North-West">North-West</option>
+                            <option value="North-East">North-East</option>
+                            <option value="South-East">South-East</option>
+                            <option value="South-West">South-West</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Ownership Type
+                    </td>
+                    <td>
+                        <input type="text" id="txtOwnershipType" name="txtOwnershipType" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Proceed" />
+                    </td>
+                </tr>
+            </table>
+        </div>
     <h3>
         Additional Feature</h3>
     <div>
-        <table width="100%" border="0" cellspacing="5px" cellpadding="5px" class="registrationTable">
-            <tr>
-                <td colspan="4">
-                    Distance form important place :
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Railway Station
-                </td>
-                <td>
-                    <select>
-                        <option value="1" selected>1</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="15">15</option>
-                    </select>
-                </td>
-                <td>
-                    School
-                </td>
-                <td>
-                    <select>
-                        <option value="1" selected>1</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="15">15</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Shopping Mall
-                </td>
-                <td>
-                    <select>
-                        <option value="1" selected>1</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="15">15</option>
-                    </select>
-                </td>
-                <td>
-                    Hospital
-                </td>
-                <td>
-                    <select>
-                        <option value="1" selected>1</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="15">15</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4">
-                    <label>
-                        Upload Property Image:</label>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <asp:FileUpload ID="FileUploadControl" runat="server" />
-                </td>
-                <td colspan="2">
-                    <asp:Button runat="server" ID="UploadButton" Text="Upload" OnClick="UploadButton_Click" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4">
-                    <asp:Label runat="server" ID="StatusLabel" Text="Upload status: " />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4" align="center">
-                    <input type="submit" value="Proceed" />
-                </td>
-            </tr>
-        </table>
-    </div>
+            <table>
+                <tr>
+                    <td colspan="4">
+                        Prominent Amenities near by (in kms) :
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Railway Station
+                    </td>
+                    <td>
+                        <input type="text" id="txtDistRail" name="txtDistRail" />
+                    </td>
+                    <td>
+                        School
+                    </td>
+                    <td>
+                        <input type="text" id="txtDistSchool" name="txtDistSchool" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Shopping Mall
+                    </td>
+                    <td>
+                        <input type="text" id="txtDistShpMall" name="txtDistShpMall" />
+                    </td>
+                    <td>
+                        Hospital
+                    </td>
+                    <td>
+                        <input type="text" id="txtDistHosp" name="txtDistHosp" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Amenities</label>
+                    </td>
+                    <td colspan="3">
+                        <textarea rows="4" cols="50" name="txtAmenities" id="txtAmenities"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>
+                            Upload Property Image:</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <asp:FileUpload ID="FileUploadControl" runat="server" />
+                    </td>
+                    <td colspan="2">
+                        <asp:Button runat="server" ID="UploadButton" Text="Upload" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <asp:Label runat="server" ID="StatusLabel" Text="Upload status: " />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" align="center">
+                        <input type="submit" value="Proceed" />
+                    </td>
+                </tr>
+            </table>
+        </div>
     <h3>
         Contact Details</h3>
     <div>
-        <table width="100%" border="0" cellspacing="5px" cellpadding="5px" class="registrationTable">
-            <tr>
-                <td>
-                    <label>
-                        Name</label>
-                </td>
-                <td>
-                    <input type="text" id="txtName" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        Mobile No</label>
-                </td>
-                <td>
-                    <input type="text" id="txtMobileNo" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        Landline No
-                    </label>
-                </td>
-                <td>
-                    <input type="text" id="txtLandlineNo" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        Email
-                    </label>
-                </td>
-                <td>
-                    <input type="text" id="txtEmail" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="submit" value="Submit" />
-                </td>
-            </tr>
-        </table>
-    </div>
+            <table>
+                <tr>
+                    <td>
+                        <label>
+                            Name</label>
+                    </td>
+                    <td>
+                        <input type="text" id="txtName" name="txtName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Mobile No</label>
+                    </td>
+                    <td>
+                        <input type="text" id="txtMobileNo" name="txtMobileNo" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Landline No
+                        </label>
+                    </td>
+                    <td>
+                        <input type="text" id="txtLandlineNo" name="txtLandlineNo" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Email ID
+                        </label>
+                    </td>
+                    <td>
+                        <input type="text" id="txtEmail" name="txtEmail" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Submit" />
+                        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+</div>
+<div id="accordionleft">
+this is left accordian 
 </div>

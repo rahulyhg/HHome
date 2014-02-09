@@ -55,6 +55,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Account\Verification.aspx" />
     <Content Include="Builder\BuilderHome.aspx" />
     <Content Include="Images\Building.png" />
     <Content Include="Images\HappyHome.png" />
@@ -759,6 +760,7 @@
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="UserControl\PropertyRegister.ascx" />
+    <Content Include="UserControl\PropertySummary.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -803,6 +805,13 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\Verification.aspx.cs">
+      <DependentUpon>Verification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Verification.aspx.designer.cs">
+      <DependentUpon>Verification.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Builder\BuilderHome.aspx.cs">
       <DependentUpon>BuilderHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -834,6 +843,13 @@
     </Compile>
     <Compile Include="UserControl\PropertyRegister.ascx.designer.cs">
       <DependentUpon>PropertyRegister.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\PropertySummary.ascx.cs">
+      <DependentUpon>PropertySummary.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\PropertySummary.ascx.designer.cs">
+      <DependentUpon>PropertySummary.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -885,6 +901,20 @@
     <None Include="Scripts\jquery-ui-1.10.3\jquery-ui-1.10.3\ui.tooltip.jquery.json" />
     <None Include="Scripts\jquery-ui-1.10.3\jquery-ui-1.10.3\ui.widget.jquery.json" />
     <None Include="Scripts\jquery-ui-1.10.3\jquery-ui-1.10.3\ui\.jshintrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonLayer\CommonLayer.csproj">
+      <Project>{372CED1B-2BC0-47E0-8E8F-4FDB858CE4DE}</Project>
+      <Name>CommonLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HappyHomesBusinessObjects\HappyHomesBusinessObjects.csproj">
+      <Project>{9ED4BB9A-2F4A-408D-9B03-A70CC240929F}</Project>
+      <Name>HappyHomesBusinessObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HappyHomesBussinessLogic\HappyHomesBussinessLogic.csproj">
+      <Project>{CA13216D-A296-4C1B-9D20-18C5AD8A9859}</Project>
+      <Name>HappyHomesBussinessLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

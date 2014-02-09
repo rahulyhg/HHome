@@ -27,6 +27,31 @@ namespace HappyHomeNew
             // Code that runs when an unhandled error occurs
 
         }
+        protected void FormsAuthentication_OnAuthenticate(Object sender, FormsAuthenticationEventArgs e)
+        {
+            if (FormsAuthentication.CookiesSupported == true)
+            {
+                if (Request.Cookies[FormsAuthentication.FormsCookieName] != null)
+                {
+                    try
+                    {
+                        //let us take out the username now                
+                        string username = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
+
+                        //let us extract the roles from our own custom cookie
+                        string roles = "BULD";
+
+                        //Let us set the Pricipal with our user specific details
+                        e.User = new System.Security.Principal.GenericPrincipal(
+                          new System.Security.Principal.GenericIdentity(username, "Forms"), roles.Split(';'));
+                    }
+                    catch (Exception)
+                    {
+                        //somehting went wrong
+                    }
+                }
+            }
+        }
 
         void Session_Start(object sender, EventArgs e)
         {

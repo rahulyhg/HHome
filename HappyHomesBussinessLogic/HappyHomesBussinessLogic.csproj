@@ -40,11 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BusinessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterBLL.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommonLayer\CommonLayer.csproj">
+      <Project>{372CED1B-2BC0-47E0-8E8F-4FDB858CE4DE}</Project>
+      <Name>CommonLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HappyHomesBusinessObjects\HappyHomesBusinessObjects.csproj">
       <Project>{9ED4BB9A-2F4A-408D-9B03-A70CC240929F}</Project>
       <Name>HappyHomesBusinessObjects</Name>

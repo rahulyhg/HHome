@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace HappyHomeNew
 {
@@ -11,7 +12,14 @@ namespace HappyHomeNew
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                divregisterHere.Visible = false;
+                HeadLoginStatus.Visible = false;
+                //Redirect to Default page
+                //Response.Redirect("default.aspx");
 
+            }
         }
     }
 }

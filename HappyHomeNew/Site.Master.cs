@@ -15,11 +15,38 @@ namespace HappyHomeNew
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 divregisterHere.Visible = false;
-                HeadLoginStatus.Visible = false;
+                lnkOut.Visible = true;
+                loginLink.Visible = false;
+                lblUsername.Text = HttpContext.Current.User.Identity.Name;
+                lblUsername.Visible = true;
+
+                NavigationMenuBuilder.Visible = true;
+                if (IsPostBack)
+                {
+
+                    
+                }
+
+
                 //Redirect to Default page
                 //Response.Redirect("default.aspx");
 
             }
+            else
+            {
+                NavigationMenuUser.Visible = true;
+
+                divregisterHere.Visible = true;
+
+                loginLink.Visible = true;
+            }
+        }
+
+        protected void lnkOut_Click(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect("Default.aspx");
+
         }
     }
 }

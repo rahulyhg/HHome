@@ -4,11 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.IO;
+using System.Configuration;
 
 namespace DataAccessLayer
 {
     public class DataAccessLayer
     {
+        string filepath = null;
+        public DataAccessLayer()
+        {
+            filepath = ConfigurationManager.AppSettings["UserXML"];
+        }
         public int addPropertyDetails(XmlDocument xDoc)
         {
             int status = 0;
@@ -16,7 +22,7 @@ namespace DataAccessLayer
             
             //ToDo: Insert Stored Procedure
 
-            xDoc.Save(@"D:\StartUp\Temp\Data.xml");
+            xDoc.Save(filepath);
 
             return status;
         }
@@ -26,7 +32,8 @@ namespace DataAccessLayer
             XmlDocument xDoc = new XmlDocument();
 
             //xDoc.LoadXml(@"H:\StartUp\Temp\Data.xml");
-            string xmlText = File.ReadAllText(@"D:\StartUp\Temp\Data.xml");
+
+            string xmlText = File.ReadAllText(filepath);
             
             xDoc.LoadXml(xmlText);
             return xDoc;
@@ -37,7 +44,8 @@ namespace DataAccessLayer
             XmlDocument xDoc = new XmlDocument();
 
             //xDoc.LoadXml(@"H:\StartUp\Temp\Data.xml");
-            string xmlText = File.ReadAllText(@"D:\StartUp\Temp\Data.xml");
+            //string xmlText = File.ReadAllText(@"D:\StartUp\Temp\Data.xml");
+            string xmlText = File.ReadAllText(filepath);
 
             xDoc.LoadXml(xmlText);
             return xDoc;

@@ -50,6 +50,8 @@ namespace PropertyPortal.UserControls
             lblPrice.InnerText = propDetails.ListingDetails.Price;
             lblBuilderName.InnerText = "ToDo";
             lblDateOfPost.InnerText = propDetails.ListingDetails.DateOfPost;
+            //imgPropertyImg.ImageUrl = "/Images/icon-home.png";
+
 
         }
     }

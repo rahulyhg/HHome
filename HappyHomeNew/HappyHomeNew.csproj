@@ -59,6 +59,8 @@
     <Content Include="Builder\BuilderHome.aspx" />
     <Content Include="Images\Building.png" />
     <Content Include="Images\HappyHome.png" />
+    <Content Include="Images\icon-home.png" />
+    <Content Include="mda.aspx" />
     <Content Include="Scripts\jquery-ui-1.10.3\jquery-ui-1.10.3\AUTHORS.txt" />
     <Content Include="Scripts\jquery-ui-1.10.3\jquery-ui-1.10.3\demos\accordion\collapsible.html" />
     <Content Include="Scripts\jquery-ui-1.10.3\jquery-ui-1.10.3\demos\accordion\custom-icons.html" />
@@ -828,6 +830,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="mda.aspx.cs">
+      <DependentUpon>mda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mda.aspx.designer.cs">
+      <DependentUpon>mda.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

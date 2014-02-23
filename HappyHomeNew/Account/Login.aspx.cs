@@ -38,7 +38,7 @@ namespace HappyHomeNew.Account
                 else
                 {
                     //no return URL specified so lets kick him to home page
-                    Response.Redirect("Default.aspx");
+                    Response.Redirect("~/Default.aspx");
                 }
             }
             

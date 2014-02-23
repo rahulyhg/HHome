@@ -13,15 +13,6 @@ namespace PropertyPortal.UserControls {
     public partial class PropertySummary {
         
         /// <summary>
-        /// imgPropertyImg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgPropertyImg;
-        
-        /// <summary>
         /// lblPropertyComposition control.
         /// </summary>
         /// <remarks>

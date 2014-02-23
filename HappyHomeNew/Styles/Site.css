@@ -8,10 +8,10 @@ body
     margin: 0px;
     padding: 0px;
     color: #696969;
-    background: #7B3439;
-    background: -moz-linear-gradient(#7B3439, #FFF);
-    background: -o-linear-gradient(#7B3439, #FFF);
-    background: -webkit-linear-gradient(#7B3439, #FFF);
+    background: #00CCCC;
+    background: -moz-linear-gradient(#FFF,#00CCCC);
+    background: -o-linear-gradient( #FFF,#00CCCC);
+    background: -webkit-linear-gradient(#FFF,#00CCCC);
     background-repeat: no-repeat;
 }
 
@@ -99,13 +99,39 @@ first child of the left and right table columns */
 }
 .top-Bar
 {
-    width: 960px;
-    position: relative;
+    width: 100%;
+    margin: 0px auto 0px auto; /*  padding-right: 200px;     margin-right: 200px;*/
+    height: auto;
+     text-align:center;
+    background: rgb(54, 25, 25); /* Fall-back for browsers that don't                                    support rgba */
+    background: rgba(54, 25, 25, .5);
+}
+.top-Bar .loginDisplay
+{
+    width: 960px !important;
+    display:inline-block;
     margin: 0px auto 0px auto; /*  padding-right: 200px;     margin-right: 200px;*/
     height: auto;
     background: rgb(54, 25, 25); /* Fall-back for browsers that don't                                    support rgba */
     background: rgba(54, 25, 25, .5);
 }
+.top-Bar .loginDisplay div
+{display:inline-block;
+ position:relative;}
+.top-Bar .loginDisplay div .left
+{
+   float:left;
+   text-align:left;
+   margin-right:500px;
+   
+}
+.top-Bar .loginDisplay div .right
+{
+    float:right;
+    text-align:right;
+    margin-left:500px;
+}
+
 
 .header
 {

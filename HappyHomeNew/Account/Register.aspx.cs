@@ -60,8 +60,14 @@ namespace HappyHomeNew.Account
                 smcl.Credentials = new NetworkCredential("sagvip@gmail.com", "Sagar12345");
                 smcl.EnableSsl = true;
                 smcl.Send(mm);
-                Response.Write("Thanks for the registration. Please check your email id for activation link . ");
+                //Response.Write("Thanks for the registration. Please check your email id for activation link . ");
+                Response.Redirect("~/mda.aspx?st=1");
             }
+            else
+            {
+                Response.Redirect("~/mda.aspx?st=0");
+            }
+
 
 
             //  FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);

@@ -13,6 +13,7 @@
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
     <script type="text/javascript">
+
         $(document).ready(function () {
             $('#individualinfo').show();
             $('#rbtnUserType').change(function () {
@@ -71,7 +72,7 @@
                 Welcome <i><b><asp:Label ID="lblUsername" runat="server" Visible="false"></asp:Label></b></i>  to <b>Happy Home Portal</b>
             </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div class="right"><%--style="text-align: left; float: right;width:30%"--%>
-               <div id="divregisterHere" runat="server"> <span style="text-align: right; padding-right: 20px">Not Register ? <i><a href="Register.aspx">
+               <div id="divregisterHere" runat="server"> <span style="text-align: right; padding-right: 20px">Not Register ? <i><a href="../Account/Register.aspx">
                     Register here</a></i></span></div>
                  
                 <asp:LinkButton ID="lnkOut" runat="server" Visible="false" 

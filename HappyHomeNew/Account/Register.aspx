@@ -147,7 +147,7 @@
                                     </td>
                                 </tr>
                             </table>
-                             <table id="Buiderinfo">
+                             <table id="Buiderinfo" style="display:none">
                     <tr>
                         <td class="style3">
                             Name

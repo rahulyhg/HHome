@@ -45,23 +45,32 @@ namespace HappyHomeNew.Account
             _register = new RegisterBLL();
             if (_register.RegisterUser(username, useremail, pwd))
             {
-
                 string code = Convert.ToBase64String(Encoding.Unicode.GetBytes(String.Format("user={0}&email={1}", username, useremail)));
+                try
+                {
+                    MailMessage mm = new MailMessage();
+                    mm.To.Add(new MailAddress(useremail, "Request for Verification"));
+                    mm.From = new MailAddress("sagvip@gmail.com");
+                    mm.Body = "Please <a href=\"http://localhost:3513/Account/Verification.aspx?custid=" + code + "\">click here </a>to verify";
+                    mm.IsBodyHtml = true;
+                    mm.Subject = "Verification";
+                    SmtpClient smcl = new SmtpClient();
+                    smcl.Host = "smtp.gmail.com";
+                    smcl.Port = 587;
+                    smcl.Credentials = new NetworkCredential("sagvip@gmail.com", "Sagar12345");
+                    smcl.EnableSsl = true;
+                    smcl.Send(mm);
+                    //Response.Write("Thanks for the registration. Please check your email id for activation link . ");
+                    Response.Redirect("~/mda.aspx?st=1");
+                }
+                catch (Exception ex)
+                {
 
-                MailMessage mm = new MailMessage();
-                mm.To.Add(new MailAddress(useremail, "Request for Verification"));
-                mm.From = new MailAddress("sagvip@gmail.com");
-                mm.Body = "Please <a href=\"http://localhost:3513/Account/Verification.aspx?custid=" + code + "\">click here </a>to verify";
-                mm.IsBodyHtml = true;
-                mm.Subject = "Verification";
-                SmtpClient smcl = new SmtpClient();
-                smcl.Host = "smtp.gmail.com";
-                smcl.Port = 587;
-                smcl.Credentials = new NetworkCredential("sagvip@gmail.com", "Sagar12345");
-                smcl.EnableSsl = true;
-                smcl.Send(mm);
-                //Response.Write("Thanks for the registration. Please check your email id for activation link . ");
-                Response.Redirect("~/mda.aspx?st=1");
+                    Response.Redirect("~/mda.aspx?st=0");
+                }
+
+
+                
             }
             else
             {

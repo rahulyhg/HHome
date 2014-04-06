@@ -9,6 +9,7 @@ using HappyHomesBussinessLogic;
 using System.Net.Mail;
 using System.Net;
 using System.Text;
+using HappyHomesBusinessObjects;
 
 namespace HappyHomeNew.Account
 {
@@ -38,18 +39,19 @@ namespace HappyHomeNew.Account
 
         protected void CreateUserButton_Click(object sender, EventArgs e)
         {
-            string username = Server.HtmlDecode(UserName.Text);
-            string useremail = Server.HtmlDecode(Email.Text);
-            string pwd = Password.Text;
-
+            UserBO _user = new UserBO();
+            _user.Username = Server.HtmlDecode(UserName.Text);
+            _user.Email = Server.HtmlDecode(Email.Text); 
+            _user.pwd = Password.Text; 
+            _user.Role = rbtnUserType.Text; 
             _register = new RegisterBLL();
-            if (_register.RegisterUser(username, useremail, pwd))
+            if (_register.RegisterUser(_user))
             {
-                string code = Convert.ToBase64String(Encoding.Unicode.GetBytes(String.Format("user={0}&email={1}", username, useremail)));
+                string code = Convert.ToBase64String(Encoding.Unicode.GetBytes(String.Format("user={0}&email={1}", _user.Username,_user.Email)));
                 try
                 {
                     MailMessage mm = new MailMessage();
-                    mm.To.Add(new MailAddress(useremail, "Request for Verification"));
+                    mm.To.Add(new MailAddress(_user.Email, "Request for Verification"));
                     mm.From = new MailAddress("sagvip@gmail.com");
                     mm.Body = "Please <a href=\"http://localhost:3513/Account/Verification.aspx?custid=" + code + "\">click here </a>to verify";
                     mm.IsBodyHtml = true;
@@ -70,7 +72,7 @@ namespace HappyHomeNew.Account
                 }
 
 
-                
+
             }
             else
             {

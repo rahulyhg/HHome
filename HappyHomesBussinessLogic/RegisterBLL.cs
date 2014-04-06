@@ -11,14 +11,14 @@ namespace HappyHomesBussinessLogic
     public class RegisterBLL
     {
         private RegisterDAL _register;
-        public bool RegisterUser(string uname ,string uemail , string pwd)
+        public bool RegisterUser(UserBO _user)
         {
             bool registrationStatus = false;
             _register= new RegisterDAL();
             try
             {
 
-                if(_register.PutUser(uname,uemail,pwd))
+                if(_register.PutUser(_user))
                 {
                     registrationStatus=true;
                 }

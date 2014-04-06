@@ -7,8 +7,12 @@ namespace HappyHomesBusinessObjects
 {
     public class UserBO
     {
-        public string Username  { get; set; }
-        public string Role { get; set; }
-        public string pwd { get; set; }
+        public string Email { get; set; } 
+        public string Username { get; set; } 
+        public string Role { get; set; } 
+        public string pwd { get; set; } 
+        public string Usertype { get; set; } 
+        public DateTime date { get; set; } 
+        public string status { get; set; }
     }
 }

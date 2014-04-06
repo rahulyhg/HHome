@@ -36,38 +36,8 @@ namespace HappyHomesDataAccessLayer
                     cmd.Parameters.AddWithValue("@Status", "InActive");
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
-               
-                
-                // //if (File.Exists(filePath))
-                // //{
-                // //    File.SetAttributes(filePath, FileAttributes.Normal);
-                // //    FileIOPermission filePermission =
-                // //             new FileIOPermission(FileIOPermissionAccess.AllAccess, filePath);
-
-                // //    using (FileStream fs = new FileStream(filePath, FileMode.Create))
-                // //    {
-                // //        using (XmlWriter w = XmlWriter.Create(fs))
-                // //        {
-                // //            w.WriteStartElement("Users");
-                 
-                // //            w.WriteEndElement();
-                // //            w.Flush();
-                // //        }
-                // //    }
-                // //}
-
-
-
-
-                // XDocument _xdoc =  XDocument.Load(@"C:\Users\sagar\proj\HHome\HappyHomesDataAccessLayer\User.xml");
-                 
-                ////_xdoc.Load(@"C:\Users\sagar\proj\HHome\HappyHomesDataAccessLayer\User.xml");
-                // if (addUserNode(_xdoc, _user.Username,_user.Email,_user.pwd))
-                // {
-                //     _xdoc.Save(@"C:\Users\sagar\proj\HHome\HappyHomesDataAccessLayer\User.xml");
-                //     registrationStatus = true;
-                // }
-                
+                    registrationStatus = true;
+                             
 
              }
              catch (Exception ex)

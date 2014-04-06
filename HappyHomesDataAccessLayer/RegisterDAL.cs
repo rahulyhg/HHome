@@ -7,6 +7,8 @@ using System.Xml;
 using System.IO;
 using System.Security.Permissions;
 using System.Xml.Linq;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace HappyHomesDataAccessLayer
 {
@@ -14,41 +16,57 @@ namespace HappyHomesDataAccessLayer
     {
          String connection_String = " ";
          string filePath = @"\User.xml";
-         public bool PutUser(string uname,string uemail,string pwd)
+         public bool PutUser(UserBO _user)
          {
              bool registrationStatus = false;
              try
              {
+                 _user.date = DateTime.Now;
+                 _user.status = "InActive";
+                 _user.Role = "Individual";
+                 SqlConnection con = new SqlConnection(@"Data Source=ABHISHEK-PC\SQLEXPRESS;Initial Catalog=HappyHomesforAll;Integrated Security=True");
+                 string sql = "INSERT INTO tbl_HaUser (UserName@emailid,Password,Role,Date,Status) VALUES (@UserName@emailid,@Password,@Role,@Date,@Status)";
                 
-                 //if (File.Exists(filePath))
-                 //{
-                 //    File.SetAttributes(filePath, FileAttributes.Normal);
-                 //    FileIOPermission filePermission =
-                 //             new FileIOPermission(FileIOPermissionAccess.AllAccess, filePath);
+                    con.Open();
+                    SqlCommand cmd = new System.Data.SqlClient.SqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("@UserName@emailid",_user.Username);
+                    cmd.Parameters.AddWithValue("@Password", _user.pwd);
+                    cmd.Parameters.AddWithValue("@Role", _user.Role);
+                    cmd.Parameters.AddWithValue("@Date", _user.date);
+                    cmd.Parameters.AddWithValue("@Status", "InActive");
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+               
+                
+                // //if (File.Exists(filePath))
+                // //{
+                // //    File.SetAttributes(filePath, FileAttributes.Normal);
+                // //    FileIOPermission filePermission =
+                // //             new FileIOPermission(FileIOPermissionAccess.AllAccess, filePath);
 
-                 //    using (FileStream fs = new FileStream(filePath, FileMode.Create))
-                 //    {
-                 //        using (XmlWriter w = XmlWriter.Create(fs))
-                 //        {
-                 //            w.WriteStartElement("Users");
+                // //    using (FileStream fs = new FileStream(filePath, FileMode.Create))
+                // //    {
+                // //        using (XmlWriter w = XmlWriter.Create(fs))
+                // //        {
+                // //            w.WriteStartElement("Users");
                  
-                 //            w.WriteEndElement();
-                 //            w.Flush();
-                 //        }
-                 //    }
-                 //}
+                // //            w.WriteEndElement();
+                // //            w.Flush();
+                // //        }
+                // //    }
+                // //}
 
 
 
 
-                 XDocument _xdoc =  XDocument.Load(@"C:\Users\sagar\proj\HHome\HappyHomesDataAccessLayer\User.xml");
+                // XDocument _xdoc =  XDocument.Load(@"C:\Users\sagar\proj\HHome\HappyHomesDataAccessLayer\User.xml");
                  
-                //_xdoc.Load(@"C:\Users\sagar\proj\HHome\HappyHomesDataAccessLayer\User.xml");
-                 if (addUserNode(_xdoc, uname, uemail, pwd))
-                 {
-                     _xdoc.Save(@"C:\Users\sagar\proj\HHome\HappyHomesDataAccessLayer\User.xml");
-                     registrationStatus = true;
-                 }
+                ////_xdoc.Load(@"C:\Users\sagar\proj\HHome\HappyHomesDataAccessLayer\User.xml");
+                // if (addUserNode(_xdoc, _user.Username,_user.Email,_user.pwd))
+                // {
+                //     _xdoc.Save(@"C:\Users\sagar\proj\HHome\HappyHomesDataAccessLayer\User.xml");
+                //     registrationStatus = true;
+                // }
                 
 
              }

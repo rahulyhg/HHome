@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
 using HappyHomesBussinessLogic;
+using System.Configuration;
 
 namespace HappyHomeNew.Account
 {
@@ -31,7 +32,8 @@ namespace HappyHomeNew.Account
 
                 if (_register.VerifyUser(username, useremail))
                 {
-                    Response.Write("Verified");
+                    Response.Write("Thanks for registration please <a href=\"" + HttpContext.Current.Request.Url.Host + ConfigurationManager.AppSettings["Login"] + "\">click here </a>to log in");
+
                 }
                 else {
                     Response.Write("Not Verified");

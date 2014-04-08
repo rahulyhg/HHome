@@ -16,35 +16,62 @@ namespace HappyHomesDataAccessLayer
     {
          String connection_String = " ";
          string filePath = @"\User.xml";
+         SqlConnection con = new SqlConnection(@"Data Source=ABHISHEK-PC\SQLEXPRESS;Initial Catalog=HappyHomesforAll;Integrated Security=True");
          public bool PutUser(UserBO _user)
          {
              bool registrationStatus = false;
-             try
-             {
-                 _user.date = DateTime.Now;
-                 _user.status = "InActive";
-                 _user.Role = "Individual";
-                 SqlConnection con = new SqlConnection(@"Data Source=ABHISHEK-PC\SQLEXPRESS;Initial Catalog=HappyHomesforAll;Integrated Security=True");
-                 string sql = "INSERT INTO tbl_HaUser (UserName@emailid,Password,Role,Date,Status) VALUES (@UserName@emailid,@Password,@Role,@Date,@Status)";
-                
-                    con.Open();
-                    SqlCommand cmd = new System.Data.SqlClient.SqlCommand(sql, con);
-                    cmd.Parameters.AddWithValue("@UserName@emailid",_user.Username);
-                    cmd.Parameters.AddWithValue("@Password", _user.pwd);
-                    cmd.Parameters.AddWithValue("@Role", _user.Role);
-                    cmd.Parameters.AddWithValue("@Date", _user.date);
-                    cmd.Parameters.AddWithValue("@Status", "InActive");
-                    cmd.CommandType = CommandType.Text;
-                    cmd.ExecuteNonQuery();
-                    registrationStatus = true;
-                             
-
+             try { 
+                 _user.date = DateTime.Now; 
+                 _user.status = "InActive"; 
+                 //_user.Role = "Individual"; 
+                 //SqlConnection con = new SqlConnection(@"Data Source=ABHISHEK-PC\SQLEXPRESS;Initial Catalog=HappyHomesforAll;Integrated Security=True");
+                 string _checkUser = "Select Id from tbl_HaUser where UserName@emailid '" + _user.Email + "\'"; 
+                 con.Open(); 
+                 SqlCommand cmdchk = new SqlCommand(_checkUser, con);
+                 // int id = (Int16)cmdchk.ExecuteScalar();
+                 if ((cmdchk.ExecuteScalar()==null)?true:false) 
+                 { string sql = "INSERT INTO tbl_HaUser (UserName@emailid,Password,Role,Date,Status) VALUES (@UserName@emailid,@Password,@Role,@Date,@Status)";
+                     SqlCommand cmd = new System.Data.SqlClient.SqlCommand(sql, con); 
+                     cmd.Parameters.AddWithValue("@UserName@emailid", _user.Email); 
+                     cmd.Parameters.AddWithValue("@Password", _user.pwd); 
+                     cmd.Parameters.AddWithValue("@Role", _user.Role); 
+                     cmd.Parameters.AddWithValue("@Date", _user.date); 
+                     cmd.Parameters.AddWithValue("@Status", "InActive"); 
+                     cmd.CommandType = CommandType.Text; cmd.ExecuteNonQuery(); registrationStatus = true; 
+                 } 
+                 con.Close(); 
              }
              catch (Exception ex)
              {
-                 
+
                  throw;
              }
+             //try
+             //{
+             //    _user.date = DateTime.Now;
+             //    _user.status = "InActive";
+             //    _user.Role = "Individual";
+             //    SqlConnection con = new SqlConnection(@"Data Source=ABHISHEK-PC\SQLEXPRESS;Initial Catalog=HappyHomesforAll;Integrated Security=True");
+             //    string sql = "INSERT INTO tbl_HaUser (UserName@emailid,Password,Role,Date,Status) VALUES (@UserName@emailid,@Password,@Role,@Date,@Status)";
+                
+             //       con.Open();
+             //       SqlCommand cmd = new System.Data.SqlClient.SqlCommand(sql, con);
+             //       cmd.Parameters.AddWithValue("@UserName@emailid",_user.Username);
+             //       cmd.Parameters.AddWithValue("@Password", _user.pwd);
+             //       cmd.Parameters.AddWithValue("@Role", _user.Role);
+             //       cmd.Parameters.AddWithValue("@Date", _user.date);
+             //       cmd.Parameters.AddWithValue("@Status", "InActive");
+             //       cmd.CommandType = CommandType.Text;
+             //       cmd.ExecuteNonQuery();
+             //       registrationStatus = true;
+                             
+
+             //}
+             //catch (Exception ex)
+             //{
+                 
+             //    throw;
+             //}
              return registrationStatus;
          }
          public bool ActivateUser(string uname, string uemail)
@@ -52,20 +79,27 @@ namespace HappyHomesDataAccessLayer
              bool verificationStatus = false;
              try
              {
-                    XmlDocument _xdoc = new XmlDocument();
-                    _xdoc.Load(@"C:\Users\sagar\proj\HHome\HappyHomesDataAccessLayer\User.xml");
+                 string str = "UPDATE tbl_HaUser SET Status =@status WHERE UserName@emailid=@uemail";
+                SqlCommand cmd = new SqlCommand(str, con);
+                cmd.Parameters.AddWithValue("@status", "Active");
+                cmd.Parameters.AddWithValue("@uemail", uemail);
+                cmd.CommandType = CommandType.Text; 
+                cmd.ExecuteNonQuery(); 
+                con.Close();
+                 //XmlDocument _xdoc = new XmlDocument();
+                 //_xdoc.Load(@"C:\Users\sagar\proj\HHome\HappyHomesDataAccessLayer\User.xml");
 
-                    XmlNodeList nodelist = _xdoc.SelectNodes("Users/User/Name");
+                 //XmlNodeList nodelist = _xdoc.SelectNodes("Users/User/Name");
 
-                    foreach (XmlNode nd in nodelist)
-                    {
-                        if (nd.InnerText == uname)
-                        {
-                            activateStatus(uname);
-                            verificationStatus = true;
-                            break;
-                        }
-                    }
+                 //foreach (XmlNode nd in nodelist)
+                 //{
+                 //    if (nd.InnerText == uname)
+                 //    {
+                 //        activateStatus(uname);
+                 //        verificationStatus = true;
+                 //        break;
+                 //    }
+                 //}
 
                  
 

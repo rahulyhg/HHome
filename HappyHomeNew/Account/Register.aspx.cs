@@ -10,6 +10,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Text;
 using HappyHomesBusinessObjects;
+using System.Configuration;
 
 namespace HappyHomeNew.Account
 {
@@ -52,18 +53,18 @@ namespace HappyHomeNew.Account
                 {
                     MailMessage mm = new MailMessage();
                     mm.To.Add(new MailAddress(_user.Email, "Request for Verification"));
-                    mm.From = new MailAddress("sagvip@gmail.com");
-                    mm.Body = "Please <a href=\"http://localhost:3513/Account/Verification.aspx?custid=" + code + "\">click here </a>to verify";
+                    mm.From = new MailAddress(ConfigurationManager.AppSettings["mailId"]);
+                    mm.Body = "Please <a href=\"" + HttpContext.Current.Request.Url.Host + ConfigurationManager.AppSettings["VerifyUrl"] + code + "\">click here </a>to verify";
                     mm.IsBodyHtml = true;
-                    mm.Subject = "Verification";
+                    mm.Subject = "Account Verification Mail form Happy Home";
                     SmtpClient smcl = new SmtpClient();
                     smcl.Host = "smtp.gmail.com";
                     smcl.Port = 587;
-                    smcl.Credentials = new NetworkCredential("sagvip@gmail.com", "Sagar12345");
+                    smcl.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["mailId"], ConfigurationManager.AppSettings["CredP"]);
                     smcl.EnableSsl = true;
                     smcl.Send(mm);
                     //Response.Write("Thanks for the registration. Please check your email id for activation link . ");
-                    Response.Redirect("~/mda.aspx?st=1");
+                    Response.Redirect("../mda.aspx?st=1");
                 }
                 catch (Exception ex)
                 {

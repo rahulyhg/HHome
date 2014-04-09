@@ -72,12 +72,12 @@
                 Welcome <i><b><asp:Label ID="lblUsername" runat="server" Visible="false"></asp:Label></b></i>  to <b>Happy Home Portal</b>
             </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div class="right"><%--style="text-align: left; float: right;width:30%"--%>
-               <div id="divregisterHere" runat="server"> <span style="text-align: right; padding-right: 20px">Not Register ? <i><a href="../Account/Register.aspx">
+               <div id="divregisterHere" runat="server"> <span style="text-align: right; padding-right: 20px">Not Register ? <i><a href="/hhome/Account/Register.aspx">
                     Register here</a></i></span></div>
                  
                 <asp:LinkButton ID="lnkOut" runat="server" Visible="false" 
                     onclick="lnkOut_Click">Log out</asp:LinkButton>&nbsp;&nbsp;
-               <a href="~/Account/Login.aspx" id="loginLink" runat="server" style="color:White">  Log In </a>
+               <a href="/Account/Login.aspx" id="loginLink" runat="server" style="color:White">  Log In </a>
                <%-- <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
                         <a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server">Log In</a>
@@ -109,11 +109,11 @@
                 <asp:Menu ID="NavigationMenuGuest" runat="server" CssClass="menu" EnableViewState="false" Visible="false"
                     IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem  NavigateUrl="~/Default.aspx" Text="Home" />
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Search Property" />
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Post Requirements" />
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Contact Us" />
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About Us" />
+                        <asp:MenuItem  NavigateUrl="/Default.aspx" Text="Home" />
+                        <asp:MenuItem NavigateUrl="/About.aspx" Text="Search Property" />
+                        <asp:MenuItem NavigateUrl="/About.aspx" Text="Post Requirements" />
+                        <asp:MenuItem NavigateUrl="/About.aspx" Text="Contact Us" />
+                        <asp:MenuItem NavigateUrl="/About.aspx" Text="About Us" />
                     </Items>
                 </asp:Menu>
                  <asp:Menu ID="NavigationMenuBuilder" runat="server" CssClass="menu" EnableViewState="false" Visible="false"

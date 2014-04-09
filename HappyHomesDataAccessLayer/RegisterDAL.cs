@@ -25,7 +25,7 @@ namespace HappyHomesDataAccessLayer
                  _user.status = "InActive"; 
                  //_user.Role = "Individual"; 
                  //SqlConnection con = new SqlConnection(@"Data Source=ABHISHEK-PC\SQLEXPRESS;Initial Catalog=HappyHomesforAll;Integrated Security=True");
-                 string _checkUser = "Select Id from tbl_HaUser where UserName@emailid '" + _user.Email + "\'"; 
+                 string _checkUser = "Select Id from tbl_HaUser where UserName@emailid ='" + _user.Email + "\'"; 
                  con.Open(); 
                  SqlCommand cmdchk = new SqlCommand(_checkUser, con);
                  // int id = (Int16)cmdchk.ExecuteScalar();
@@ -80,11 +80,14 @@ namespace HappyHomesDataAccessLayer
              try
              {
                  string str = "UPDATE tbl_HaUser SET Status =@status WHERE UserName@emailid=@uemail";
-                SqlCommand cmd = new SqlCommand(str, con);
+                 con.Open();
+                 SqlCommand cmd = new SqlCommand(str, con);
+
                 cmd.Parameters.AddWithValue("@status", "Active");
                 cmd.Parameters.AddWithValue("@uemail", uemail);
                 cmd.CommandType = CommandType.Text; 
-                cmd.ExecuteNonQuery(); 
+             
+                 cmd.ExecuteNonQuery(); 
                 con.Close();
                  //XmlDocument _xdoc = new XmlDocument();
                  //_xdoc.Load(@"C:\Users\sagar\proj\HHome\HappyHomesDataAccessLayer\User.xml");

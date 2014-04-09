@@ -59,7 +59,7 @@
                                         Name
                                     </td>
                                     <td>
-                                        <input type="text" name="country" pattern="[A-z]{}" id="txtName" runat="server" />
+                                        <input type="text" name="country"  id="txtName" runat="server" />
                                         <%--<asp:TextBox ID="txtName" runat="server" Width="232px"></asp:TextBox>--%>
                                     </td>
                                 </tr>
